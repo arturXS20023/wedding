@@ -41,15 +41,6 @@
         .bg-black .timeline-item {
             border-bottom-color: #333;
         }
-        .bg-black .btn-outline-light {
-            background: transparent;
-            border: 1px solid #ffffff;
-            color: #ffffff;
-        }
-        .bg-black .btn-outline-light:hover {
-            background: #ffffff;
-            color: #000000;
-        }
 
         /* Белый фон */
         .bg-white {
@@ -57,29 +48,7 @@
             color: #1e1e1e;
         }
 
-        /* Фон с размытием для страниц 1 и 9 */
-        .blur-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            filter: blur(6px) brightness(0.6);
-            z-index: 0;
-            transform: scale(1.02);
-        }
-        .blur-bg::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.3);
-        }
-        .page .content {
+        .content {
             position: relative;
             z-index: 2;
             text-align: center;
@@ -97,7 +66,6 @@
             font-size: 5rem;
             margin-bottom: 1rem;
             color: #fff;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
         }
 
         h2 {
@@ -179,6 +147,15 @@
             background: #000;
             color: white;
         }
+        .btn-outline-light {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+        .btn-outline-light:hover {
+            background: #fff;
+            color: #000;
+        }
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -195,21 +172,12 @@
             text-align: center;
             box-shadow: 0 20px 35px rgba(0,0,0,0.3);
         }
-        .bg-white .calendar-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.05);
-        }
-        .bg-white .calendar-day {
-            background: #fafafa;
-            color: #1e1e1e;
-        }
         .calendar-header {
             font-size: 1.8rem;
             font-weight: 600;
             font-family: 'Cormorant Garamond', serif;
             margin-bottom: 20px;
-            color: inherit;
+            color: #fff;
         }
         .calendar-weekdays {
             display: grid;
@@ -255,7 +223,7 @@
             margin: 30px auto;
             text-align: center;
             border: 1px solid #e0e0e0;
-            max-width: 700px;
+            max-width: 600px;
         }
         .location-link {
             font-size: 1.2rem;
@@ -266,13 +234,8 @@
             display: inline-block;
             margin: 15px 0;
         }
-        .venue-photo {
-            width: 100%;
-            max-width: 550px;
-            border-radius: 28px;
-            margin: 20px 0;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            object-fit: cover;
+        .location-link:hover {
+            border-bottom: 1px solid #000;
         }
 
         /* Тайминг */
@@ -285,19 +248,12 @@
             border-radius: 32px;
             backdrop-filter: blur(4px);
         }
-        .bg-white .timeline {
-            background: #f8f8f8;
-            color: #1e1e1e;
-        }
         .timeline-item {
             display: flex;
             justify-content: space-between;
             padding: 14px 0;
             border-bottom: 1px solid #444;
             font-size: 1.1rem;
-        }
-        .bg-white .timeline-item {
-            border-bottom-color: #ddd;
         }
         .timeline-time { font-weight: 600; }
         .timeline-desc { font-weight: 300; }
@@ -403,7 +359,7 @@
             background: #fafaf5;
             padding: 28px;
             border-radius: 32px;
-            max-width: 500px;
+            max-width: 400px;
         }
         .tg-link {
             display: inline-flex;
@@ -425,24 +381,22 @@
             h2 { font-size: 2rem; }
             .timer-block { min-width: 65px; }
             .timer-number { font-size: 1.6rem; }
-            .venue-photo { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- СТРАНИЦА 1: Жених и невеста без лиц (размытый фон) -->
-    <section class="page" style="position: relative; overflow: hidden; background: #1a1a1a;">
-        <div class="blur-bg" style="background-image: url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-position: 30% 50%;"></div>
+    <!-- СТРАНИЦА 1: Черный фон -->
+    <section class="page bg-black" id="page1">
         <div class="content">
             <h1>Приглашение на свадьбу</h1>
-            <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond'; color: #fff; margin: 20px 0;">Артур & Ольга</div>
+            <div style="font-size: 3.5rem; font-family: 'Cormorant Garamond'; margin: 20px 0;">Артур & Ольга</div>
             <div class="date-large">25.08.2026</div>
             <a href="#page2" class="btn btn-white">Открыть приглашение →</a>
         </div>
     </section>
 
-    <!-- СТРАНИЦА 2: Текст приглашения (белый фон) -->
+    <!-- СТРАНИЦА 2: Белый фон -->
     <section class="page bg-white" id="page2">
         <div class="content">
             <h2>Дорогие друзья!</h2>
@@ -454,12 +408,12 @@
         </div>
     </section>
 
-    <!-- СТРАНИЦА 3: Мы ждём вас + календарь (черный фон) -->
+    <!-- СТРАНИЦА 3: Черный фон + календарь -->
     <section class="page bg-black" id="page3">
         <div class="content">
             <h2>Мы ждём вас</h2>
             <p style="font-size: 1.2rem; max-width: 550px; margin: 0 auto 20px;">Не пропустите важное событие этого лета – день нашей свадьбы!</p>
-            <div class="calendar-card" id="animatedCalendar">
+            <div class="calendar-card">
                 <div class="calendar-header">Август 2026</div>
                 <div class="calendar-weekdays">
                     <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
@@ -470,22 +424,21 @@
         </div>
     </section>
 
-    <!-- СТРАНИЦА 4: Локация + фото загородного дома (белый фон) -->
+    <!-- СТРАНИЦА 4: Белый фон + локация -->
     <section class="page bg-white" id="page4">
         <div class="content">
             <h2>Локация</h2>
             <div class="location-box">
-                <p style="margin-bottom: 12px; font-size: 1.1rem;">Усадебный комплекс «Берёзовая роща»<br>Московская область</p>
-                <img class="venue-photo" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Загородный дом для свадьбы">
-                <div><a href="https://yandex.ru/navi?whatshere%5Bzoom%5D=18&whatshere%5Bpoint%5D=38.097627,55.970680&si=zckw2mwmymk1j1h6pvcwzu9uj8" target="_blank" class="location-link">
+                <p style="margin-bottom: 16px; font-size: 1.1rem;">Усадебный комплекс «Берёзовая роща»<br>Московская область</p>
+                <a href="https://yandex.ru/navi?whatshere%5Bzoom%5D=18&whatshere%5Bpoint%5D=38.097627,55.970680&si=zckw2mwmymk1j1h6pvcwzu9uj8" target="_blank" class="location-link">
                     <i class="fas fa-map-marker-alt"></i> Открыть в Яндекс.Навигаторе
-                </a></div>
+                </a>
             </div>
             <a href="#page5" class="btn btn-outline-dark">Расписание дня →</a>
         </div>
     </section>
 
-    <!-- СТРАНИЦА 5: Тайминг (черный фон) -->
+    <!-- СТРАНИЦА 5: Черный фон + тайминг -->
     <section class="page bg-black" id="page5">
         <div class="content">
             <h2>Тайминг дня</h2>
@@ -499,7 +452,7 @@
         </div>
     </section>
 
-    <!-- СТРАНИЦА 6: Дресс-код (белый фон) -->
+    <!-- СТРАНИЦА 6: Белый фон + дресс-код -->
     <section class="page bg-white" id="page6">
         <div class="content">
             <h2>Дресс-код</h2>
@@ -518,7 +471,7 @@
         </div>
     </section>
 
-    <!-- СТРАНИЦА 7: Таймер (черный фон) -->
+    <!-- СТРАНИЦА 7: Черный фон + таймер -->
     <section class="page bg-black" id="page7">
         <div class="content">
             <h2>До нашей свадьбы осталось</h2>
@@ -534,29 +487,32 @@
         </div>
     </section>
 
-    <!-- СТРАНИЦА 8: Контакты (белый фон) -->
+    <!-- СТРАНИЦА 8: Белый фон + контакты -->
     <section class="page bg-white" id="page8">
         <div class="content">
             <h2>Контакты</h2>
             <p style="margin-bottom: 20px;">По всем вопросам, связанным с мероприятием, Вы можете связаться с нами</p>
             <div class="contacts-card">
                 <p><strong>Артур:</strong> +7 (964) 571-49-51</p>
-                <a href="https://t.me/arturXS20023" target="_blank" class="tg-link"><i class="fab fa-telegram"></i> Написать Артуру</a>
-                <p style="margin-top: 20px;"><strong>Ольга:</strong> +7 (999) 621-38-06</p>
-                <a href="https://t.me/malutsif" target="_blank" class="tg-link"><i class="fab fa-telegram"></i> Написать Ольге</a>
+                <a href="https://t.me/arturXS20023" target="_blank" class="tg-link">
+                    <i class="fab fa-telegram"></i> Написать Артуру в Telegram
+                </a>
             </div>
             <a href="#page9" class="btn btn-outline-dark">Анкета гостя →</a>
         </div>
     </section>
 
-    <!-- СТРАНИЦА 9: Анкета гостя (белый фон) -->
+    <!-- СТРАНИЦА 9: Белый фон + анкета -->
     <section class="page bg-white" id="page9">
         <div class="content">
             <h2>Анкета гостя</h2>
             <p>Пожалуйста, подтвердите присутствие — это поможет нам в организации праздника</p>
             <div class="rsvp-form">
                 <form id="guestForm">
-                    <div class="form-group"><label>1) Фамилия и Имя</label><input type="text" id="fullname" placeholder="Иванова Анна" required></div>
+                    <div class="form-group">
+                        <label>1) Фамилия и Имя</label>
+                        <input type="text" id="fullname" placeholder="Иванова Анна" required>
+                    </div>
                     <div class="form-group">
                         <label>2) Планируете прийти?</label>
                         <select id="attendance" required>
@@ -565,16 +521,28 @@
                             <option value="Не смогу">Не смогу</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>3) Имя спутника/спутницы (если будете не одни)</label><input type="text" id="companion" placeholder="Имя и фамилия"></div>
+                    <div class="form-group">
+                        <label>3) Имя спутника/спутницы (если будете не одни)</label>
+                        <input type="text" id="companion" placeholder="Имя и фамилия">
+                    </div>
                     <div class="form-group">
                         <label>4) Планируете остаться с ночёвкой?</label>
-                        <select id="overnight"><option value="Нет">Нет</option><option value="Да">Да</option></select>
+                        <select id="overnight">
+                            <option value="Нет">Нет</option>
+                            <option value="Да">Да</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>5) Ваши предпочтения (напитки)</label>
                         <select id="drink">
-                            <option>Шампанское</option><option>Красное вино</option><option>Белое вино</option>
-                            <option>Водка</option><option>Виски</option><option>Коньяк</option><option>Пиво</option><option>Не пью алкоголь</option>
+                            <option>Шампанское</option>
+                            <option>Красное вино</option>
+                            <option>Белое вино</option>
+                            <option>Водка</option>
+                            <option>Виски</option>
+                            <option>Коньяк</option>
+                            <option>Пиво</option>
+                            <option>Не пью алкоголь</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-submit">Отправить подтверждение</button>
@@ -585,18 +553,17 @@
         </div>
     </section>
 
-    <!-- СТРАНИЦА 10: До скорой встречи! (фон жених/невеста без лиц) -->
-    <section class="page" id="page10" style="position: relative; overflow: hidden; background: #1a1a1a;">
-        <div class="blur-bg" style="background-image: url('https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-position: 20% 50%;"></div>
+    <!-- СТРАНИЦА 10: Черный фон + финал -->
+    <section class="page bg-black" id="page10">
         <div class="content">
-            <h2 style="color: #fff;">До скорой встречи!</h2>
-            <div style="font-size: 2.2rem; font-family: 'Cormorant Garamond'; color: #fff; margin: 30px 0;">С любовью,<br>Артур и Ольга</div>
+            <h2>До скорой встречи!</h2>
+            <div style="font-size: 2.2rem; font-family: 'Cormorant Garamond'; margin: 30px 0;">С любовью,<br>Артур и Ольга</div>
             <div class="subhead" style="color: #f0f0f0;">25 августа 2026 | Ждём вас разделить с нами этот день</div>
         </div>
     </section>
 
     <script>
-        // ========== КАЛЕНДАРЬ август 2026, выделить 25 число ==========
+        // ========== КАЛЕНДАРЬ: август 2026, выделить 25 число ==========
         function buildCalendar() {
             const year = 2026, month = 7, highlightDay = 25;
             const firstDay = new Date(year, month, 1).getDay();
@@ -605,15 +572,23 @@
             const container = document.getElementById('calendarDays');
             if (!container) return;
             container.innerHTML = '';
+            
             for (let i = 0; i < startOffset; i++) {
-                let empty = document.createElement('div'); empty.className = 'calendar-day'; empty.style.background = 'transparent'; empty.innerHTML = '';
+                let empty = document.createElement('div');
+                empty.className = 'calendar-day';
+                empty.style.background = 'transparent';
+                empty.style.boxShadow = 'none';
+                empty.innerHTML = '';
                 container.appendChild(empty);
             }
+            
             for (let d = 1; d <= daysInMonth; d++) {
                 let dayDiv = document.createElement('div');
                 dayDiv.className = 'calendar-day';
                 dayDiv.textContent = d;
-                if (d === highlightDay) dayDiv.classList.add('highlight');
+                if (d === highlightDay) {
+                    dayDiv.classList.add('highlight');
+                }
                 container.appendChild(dayDiv);
             }
         }
@@ -624,19 +599,24 @@
             const target = new Date("August 25, 2026 00:00:00").getTime();
             const now = new Date().getTime();
             const diff = target - now;
+            
             if (diff <= 0) {
-                document.getElementById("days").innerHTML = "00"; document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00"; document.getElementById("seconds").innerHTML = "00";
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
                 return;
             }
+            
             const days = Math.floor(diff / (86400000));
             const hours = Math.floor((diff % 86400000) / 3600000);
             const minutes = Math.floor((diff % 3600000) / 60000);
             const seconds = Math.floor((diff % 60000) / 1000);
-            document.getElementById("days").innerHTML = days < 10 ? "0"+days : days;
-            document.getElementById("hours").innerHTML = hours < 10 ? "0"+hours : hours;
-            document.getElementById("minutes").innerHTML = minutes < 10 ? "0"+minutes : minutes;
-            document.getElementById("seconds").innerHTML = seconds < 10 ? "0"+seconds : seconds;
+            
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
         }
         setInterval(updateTimer, 1000);
         updateTimer();
@@ -647,39 +627,45 @@
 
         form.addEventListener("submit", function(e) {
             e.preventDefault();
+            
             const fullname = document.getElementById("fullname").value.trim();
             const attendance = document.getElementById("attendance").value;
             const companion = document.getElementById("companion").value.trim();
             const overnight = document.getElementById("overnight").value;
             const drink = document.getElementById("drink").value;
-
+            
             if (!fullname || !attendance) {
                 feedbackDiv.innerHTML = "<span style='color:#b1624b;'>❌ Пожалуйста, заполните имя и выберите вариант присутствия.</span>";
                 setTimeout(() => feedbackDiv.innerHTML = "", 3000);
                 return;
             }
-
-            let message = `📋 НОВАЯ АНКЕТА ГОСТЯ (Свадьба Артур & Ольга):\n\n`;
-            message += `👤 Гость: ${fullname}\n`;
-            message += `✅ Присутствие: ${attendance}\n`;
-            if (companion) message += `👥 Спутник(ца): ${companion}\n`;
-            message += `🌙 Ночёвка: ${overnight}\n`;
-            message += `🍷 Напиток: ${drink}\n`;
-            message += `—————————————\nОтправлено со свадебного сайта.`;
-
-            const encoded = encodeURIComponent(message);
-            const tgArtur = `https://t.me/arturXS20023?text=${encoded}`;
-            const tgOlga = `https://t.me/malutsif?text=${encoded}`;
-
+            
+            // Формируем сообщение
+            let message = `📋 НОВАЯ АНКЕТА ГОСТЯ (Свадьба Артур & Ольга):%0A%0A`;
+            message += `👤 Гость: ${fullname}%0A`;
+            message += `✅ Присутствие: ${attendance}%0A`;
+            if (companion) message += `👥 Спутник(ца): ${companion}%0A`;
+            message += `🌙 Ночёвка: ${overnight}%0A`;
+            message += `🍷 Напиток: ${drink}%0A`;
+            message += `—————————————%0AОтправлено со свадебного сайта.`;
+            
+            // Ссылка для отправки Артуру
+            const tgLink = `https://t.me/arturXS20023?text=${message}`;
+            
+            // Открываем Telegram с готовым сообщением
+            window.open(tgLink, "_blank");
+            
             feedbackDiv.innerHTML = `
-                <div style="background:#f0f0e8; padding:16px; border-radius:28px; margin-top:12px;">
-                ✅ Данные готовы! Отправьте организаторам:<br><br>
-                <a href="${tgArtur}" target="_blank" class="btn" style="background:#000; margin:5px; font-size:0.8rem; display:inline-block;">📩 Артуру</a>
-                <a href="${tgOlga}" target="_blank" class="btn" style="background:#444; margin:5px; font-size:0.8rem; display:inline-block;">📩 Ольге</a>
-                <br><small>Нажмите на кнопку, чтобы открыть Telegram с готовым сообщением.</small>
+                <div style="background:#e8f0e8; padding:16px; border-radius:28px; margin-top:12px; color:#2c5e2c;">
+                ✅ Спасибо! Откроется Telegram с готовым сообщением.<br>
+                Пожалуйста, отправьте его Артуру для подтверждения.
                 </div>
             `;
-            setTimeout(() => feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 200);
+            
+            // Опционально: очистить форму
+            setTimeout(() => {
+                feedbackDiv.innerHTML = "";
+            }, 5000);
         });
 
         // плавная навигация по якорям
